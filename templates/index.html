@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Tax Calculator
+{% endblock %}
+
+{% block body %}
+<br>
+
+<h2>FY 2022</h2>
+<h3>Help you to find the tax you need to pay for your income.</h3>
+Now only you can check below or equal to 10 lakhs.
+<br>
+
+<form action="/" method="post">
+
+    <div class="form-group row">
+        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">
+          Name of the person
+          </label>
+        <div class="col-sm-10">
+          <input type="text" name="person" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Name">
+        </div>
+      </div>
+
+
+    <div class="form-group row">
+      <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">
+        Basic Salary + DA 
+        </label>
+      <div class="col-sm-10">
+        <input type="text" name="salary" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Total Salary">
+      </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-dark me-2" name="submit">Submit</button>
+    </div>
+  </form>
+
+
+<div class="container">
+    <div class="row">
+        <div class="card-body">
+            <h5 class="card-title">HRA Receipt download</h5>
+            <p class="card-text">
+              Download the HRA Receipt and fill the form.
+            </p>
+            <a href="static/pdf/hra.pdf" class="btn btn-primary">Download</a>
+          </div>
+          {% if income %}
+            <div class="col-sm-4">
+                <div class="card text-white bg-primary mb-3" style="max-width: 18rem; margin: auto; margin-top: 10px;">
+                <div class="card-header">Payable Tax</div>
+                <div class="card-body">
+                <h5 class="card-title">Tax Payable for {{income}}</h5>
+                <p class="card-text">
+                    <li>Name: {{name}}</li>
+                        <li>Tax Payable: {{tax}}</li>
+                </p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+
